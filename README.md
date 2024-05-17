@@ -66,12 +66,12 @@ mkdir -p my_app/src
 cd my_app
 
 Write the Application Code
-# For Application 1 File {App_1_main.c File}
-# For Application 2 File {App_2_main.c File}
+## For Application 1 File {App_1_main.c File}
+## For Application 2 File {App_2_main.c File}
 touch src/main.c
 nano src/main.c
 
-# Create a prj.conf file in the my_app directory (not in src) and open it for editing.
+## Create a prj.conf file in the my_app directory (not in src) and open it for editing.
 touch prj.conf
 nano prj.conf
 
