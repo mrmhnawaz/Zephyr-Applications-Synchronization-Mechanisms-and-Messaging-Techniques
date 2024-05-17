@@ -67,7 +67,10 @@ cd my_app
 
 Write the Application Code
 ## For Application 1 File {App_1_main.c File}
+## For pseudo code_ App 1
 ## For Application 2 File {App_2_main.c File}
+## For pseudo code_ App 2
+
 touch src/main.c
 nano src/main.c
 
