@@ -1,0 +1,2 @@
+# Zephyr-Applications-Synchronization-Mechanisms-and-Messaging-Techniques
+Discover Zephyr Applications, synchronization mechanisms and messaging techniques on Ubuntu. Application 1 manages random byte creation within a global data structure using mutexes for thread safety, and Application 2 experiments with messaging using Zephyr's queues, publishing bytes without global access, development on the native POSIX port
