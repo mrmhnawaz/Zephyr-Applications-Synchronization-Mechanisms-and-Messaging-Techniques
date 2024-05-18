@@ -7,7 +7,7 @@ Usage:
 Zephyr RTOS finds extensive use across industries such as automotive, consumer electronics, healthcare, and industrial automation. It's well-suited for developing wearables, smart sensors, industrial controllers, and IoT gateways. With its compatibility with the Ubuntu operating system, developers can seamlessly set up their development environment on Ubuntu, leverage the native POSIX port for testing, and utilize familiar tools and workflows. This compatibility enhances productivity and accelerates the development cycle for embedded IoT projects on the Ubuntu platform.
 
 # Requirements
-## Ubuntu operating system
+ Ubuntu operating system
 ## Zephyr SDK
 ## West tool
 ## CMake
