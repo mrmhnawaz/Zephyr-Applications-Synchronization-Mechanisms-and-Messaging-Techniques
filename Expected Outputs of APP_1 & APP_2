@@ -1,0 +1,15 @@
+# APP_1 Expected Output 
+## Every second, you should see messages from the random_data_thread indicating the number of bytes added to the buffer:
+
+### Added 48 bytes, buffer size: 48
+### Added 33 bytes, buffer size: 81
+...
+## Every 10 seconds, you should see messages from the print_data_thread checking the buffer size and printing data if there are at least 512 bytes:
+
+# APP_2 Expected Output
+## Every second, the random_data_thread will generate random bytes and attempt to put them in the message queue. If the queue is full, a message will indicate that the message is dropped. Every 10 seconds, the print_data_thread will print all data currently in the message queue.
+### Printing data:
+### 3c 7a 5e 4f ...
+### Total bytes printed: 512
+...
+### No data to print.
