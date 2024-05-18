@@ -7,38 +7,38 @@ Usage:
 Zephyr RTOS finds extensive use across industries such as automotive, consumer electronics, healthcare, and industrial automation. It's well-suited for developing wearables, smart sensors, industrial controllers, and IoT gateways. With its compatibility with the Ubuntu operating system, developers can seamlessly set up their development environment on Ubuntu, leverage the native POSIX port for testing, and utilize familiar tools and workflows. This compatibility enhances productivity and accelerates the development cycle for embedded IoT projects on the Ubuntu platform.
 
 # Requirements
-Ubuntu operating system
-Zephyr SDK
-West tool
-CMake
-Ninja build system
-QEMU (for emulating native POSIX port)
+## Ubuntu operating system
+## Zephyr SDK
+## West tool
+## CMake
+## Ninja build system
+## QEMU (for emulating native POSIX port)
 
 #### Setup Instruction
 
 ## Get Zephyr and install Python dependencies
 
-Use apt to install Python venv package:
-sudo apt install python3-venv
+## Use apt to install Python venv package:
+ sudo apt install python3-venv
 
-Create a new virtual environment:
-python3 -m venv ~/zephyrproject/.venv
+## Create a new virtual environment:
+ python3 -m venv ~/zephyrproject/.venv
 
-Activate the virtual environment:
+## Activate the virtual environment:
 source ~/zephyrproject/.venv/bin/activate
 
-Install west:
+## Install west:
 pip install west
 
-Get the Zephyr source code:
+## Get the Zephyr source code:
 west init ~/zephyrproject
 cd ~/zephyrproject
 west update
 
-Export a Zephyr CMake package. This allows CMake to automatically load boilerplate code required for building Zephyr applications.
+## Export a Zephyr CMake package. This allows CMake to automatically load boilerplate code required for building Zephyr applications.
 west zephyr-export
 
-Zephyr’s scripts/requirements.txt file declares additional Python dependencies. Install them with pip.
+## Zephyr’s scripts/requirements.txt file declares additional Python dependencies. Install them with pip.
 pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt
 
 ## Install the Zephyr SDK
@@ -48,10 +48,10 @@ cd ~
 wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.5-1/zephyr-sdk-0.16.5-1_linux-x86_64.tar.xz
 wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.5-1/sha256.sum | shasum --check --ignore-missing
 
-Extract the Zephyr SDK bundle archive
+## Extract the Zephyr SDK bundle archive
 tar xvf zephyr-sdk-0.16.5-1_linux-x86_64.tar.xz
 
-Run the Zephyr SDK bundle setup script:
+## Run the Zephyr SDK bundle setup script:
 cd zephyr-sdk-0.16.5-1
 ./setup.sh
 
@@ -75,9 +75,18 @@ touch src/main.c
 nano src/main.c
 
 ## Create a prj.conf file in the my_app directory (not in src) and open it for editing.
+
 touch prj.conf
 nano prj.conf
 
+## Create a CMakeLists.txt file in the root of your project directory:
+   cmake
+   cmake_minimum_required(VERSION 3.13.1)
+
+   find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+   project(my_project)
+
+   target_sources(app PRIVATE src/main.c)
 
 ##To use the native POSIX port of Zephyr
 Install Zephyr SDK: Download and install the Zephyr SDK, which includes all the necessary tools and libraries to build and run Zephyr applications.
