@@ -7,14 +7,14 @@ Usage:
 Zephyr RTOS finds extensive use across industries such as automotive, consumer electronics, healthcare, and industrial automation. It's well-suited for developing wearables, smart sensors, industrial controllers, and IoT gateways. With its compatibility with the Ubuntu operating system, developers can seamlessly set up their development environment on Ubuntu, leverage the native POSIX port for testing, and utilize familiar tools and workflows. This compatibility enhances productivity and accelerates the development cycle for embedded IoT projects on the Ubuntu platform.
 
 # Requirements
- Ubuntu operating system
-## Zephyr SDK
-## West tool
-## CMake
-## Ninja build system
-## QEMU (for emulating native POSIX port)
+Ubuntu operating system
+Zephyr SDK
+West tool
+CMake
+Ninja build system
+QEMU (for emulating native POSIX port)
 
-#### Setup Instruction
+# Setup Instruction
 
 ## Get Zephyr and install Python dependencies
 
@@ -41,9 +41,9 @@ west zephyr-export
 ## Zephyr’s scripts/requirements.txt file declares additional Python dependencies. Install them with pip.
 pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt
 
-## Install the Zephyr SDK
+# Install the Zephyr SDK
 
-Download and verify the Zephyr SDK bundle
+## Download and verify the Zephyr SDK bundle
 cd ~
 wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.5-1/zephyr-sdk-0.16.5-1_linux-x86_64.tar.xz
 wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.5-1/sha256.sum | shasum --check --ignore-missing
@@ -55,9 +55,9 @@ tar xvf zephyr-sdk-0.16.5-1_linux-x86_64.tar.xz
 cd zephyr-sdk-0.16.5-1
 ./setup.sh
 
-Follow the Zephyr Project's [Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html) to set up your development environment.
+## Follow the Zephyr Project's [Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html) to set up your development environment.
 
-#### Clone the Repository
+## Clone the Repository
 git clone https://github.com/mrmhnawaz/Zephyr-Applications-Synchronization-Mechanisms-and-Messaging-Techniques.git
 cd Zephyr-Applications-Synchronization-Mechanisms-and-Messaging-Techniques
 
@@ -65,33 +65,34 @@ cd Zephyr-Applications-Synchronization-Mechanisms-and-Messaging-Techniques
 mkdir -p my_app/src
 cd my_app
 
-Write the Application Code
+# Write the Application Code
 ## For Application 1 File {App_1_main.c File}
 ## For pseudo code_ App 1
 ## For Application 2 File {App_2_main.c File}
 ## For pseudo code_ App 2
 
-touch src/main.c
+touch src/main.c  
 nano src/main.c
 
 ## Create a prj.conf file in the my_app directory (not in src) and open it for editing.
 
-touch prj.conf
+touch prj.conf  
 nano prj.conf
 
 ## Create a CMakeLists.txt file in the root of your project directory:
-   cmake
-   cmake_minimum_required(VERSION 3.13.1)
+   cmake  
+   cmake_minimum_required(VERSION 3.13.1)  
 
-   find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-   project(my_project)
+   find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})  
+   project(zephyrproject)
 
    target_sources(app PRIVATE src/main.c)
 
 # To use the native POSIX port of Zephyr
 Install Zephyr SDK: Download and install the Zephyr SDK, which includes all the necessary tools and libraries to build and run Zephyr applications.
 
-## Set Up Zephyr Environment: Set up the Zephyr environment by initializing the Zephyr project and exporting environment variables. You can do this using the west tool, which is a command-line tool for working with Zephyr repositories.
+## Set Up Zephyr Environment: Set up the Zephyr environment by initializing the Zephyr project and exporting environment variables. 
+## You can do this using the west tool, which is a command-line tool for working with Zephyr repositories.
 west init ~/zephyrproject
 cd ~/zephyrproject
 west zephyr-export
@@ -104,9 +105,9 @@ CONFIG_BOARD_NATIVE_POSIX=y
 ## Build Application
 west build -b native_posix
 
-## Run Application
+# Run Application
 west build -t run
 
-## Monitor Output 
+# Monitor Output 
 The output of application will be displayed in the terminal
 (Using the native POSIX port of Zephyr allows to develop and test Zephyr applications on your host machine without the need for physical hardware.)
