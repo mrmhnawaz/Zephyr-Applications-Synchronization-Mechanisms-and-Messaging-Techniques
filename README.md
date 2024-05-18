@@ -88,25 +88,25 @@ nano prj.conf
 
    target_sources(app PRIVATE src/main.c)
 
-##To use the native POSIX port of Zephyr
+# To use the native POSIX port of Zephyr
 Install Zephyr SDK: Download and install the Zephyr SDK, which includes all the necessary tools and libraries to build and run Zephyr applications.
 
-Set Up Zephyr Environment: Set up the Zephyr environment by initializing the Zephyr project and exporting environment variables. You can do this using the west tool, which is a command-line tool for working with Zephyr repositories.
+## Set Up Zephyr Environment: Set up the Zephyr environment by initializing the Zephyr project and exporting environment variables. You can do this using the west tool, which is a command-line tool for working with Zephyr repositories.
 west init ~/zephyrproject
 cd ~/zephyrproject
 west zephyr-export
 
-Zephyr application code
+## Zephyr application code
 
 Modify the prj.conf file to specify the build configuration for the native POSIX port. This includes setting the board to native_posix.
 CONFIG_BOARD_NATIVE_POSIX=y
 
-Build Application
+## Build Application
 west build -b native_posix
 
-Run Application
+## Run Application
 west build -t run
 
-Monitor Output 
+## Monitor Output 
 The output of application will be displayed in the terminal
 (Using the native POSIX port of Zephyr allows to develop and test Zephyr applications on your host machine without the need for physical hardware.)
