@@ -1,10 +1,8 @@
 
 ///Application 1 - Do not use any messaging techniques available in Zephyr, only synchronisation mechanisms
-
-#include <zephyr.h>
-#include <sys/printk.h>
-#include <sys/__assert.h>
-#include <random/rand32.h>
+#include <zephyr/sys/printk.h>
+//#include <sys/__assert.h>
+#include <zephyr/random/random.h>
 #include <string.h>
 
 #define STACK_SIZE 1024
@@ -104,12 +102,6 @@ void main(void)
                     THREAD_PRIORITY, 0, K_NO_WAIT);
 }
 
-## prj.conf:
-CONFIG_MAIN_STACK_SIZE=1024
-CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024
-CONFIG_CONSOLE=y
-CONFIG_UART_CONSOLE=y
-CONFIG_PRINTK=y
 
   Assumptions:
 
