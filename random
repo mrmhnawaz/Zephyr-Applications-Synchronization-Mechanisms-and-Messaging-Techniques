@@ -56,4 +56,42 @@ void print_data_thread(void)
 
     if (buffer_size >= CHUNK_SIZE) {
       printk("Buffer size before printing: %zu\n", buffer_size);
-      printk("Latest %d bytes (hex): ", CH
+      printk("Latest %d bytes (hex): ", CHUNK_SIZE);
+
+      // Print the latest CHUNK_SIZE bytes in hex
+      for (size_t i = buffer_size - CHUNK_SIZE; i < buffer_size; i++) {
+        printk("%02x", data_buffer[i]);
+      }
+      printk("\n");
+
+      // Remove the printed bytes
+      buffer_size -= CHUNK_SIZE;
+
+      // Shift remaining data to the front of the buffer
+      memmove(data_buffer, data_buffer + CHUNK_SIZE, buffer_size);
+
+      printk("Buffer size after printing: %zu\n", buffer_size);
+    } else {
+      printk("Not enough data to print. Buffer size: %zu\n", buffer_size);
+    }
+
+    k_mutex_unlock(&buffer_mutex);
+  }
+}
+
+void main(void)
+{
+  k_mutex_init(&buffer_mutex);
+
+  k_thread_create(&thread_data_1, thread_stack_area_1,
+                  K_THREAD_STACK_SIZEOF(thread_stack_area_1),
+                  random_data_thread,
+                  NULL, NULL, NULL,
+                  THREAD_PRIORITY, 0, K_NO_WAIT);
+
+  k_thread_create(&thread_data_2, thread_stack_area_2,
+                  K_THREAD_STACK_SIZEOF(thread_stack_area_2),
+                  print_data_thread,
+                  NULL, NULL, NULL,
+                  THREAD_PRIORITY, 0, K_NO_WAIT);
+}
